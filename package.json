@@ -1,0 +1,21 @@
+{
+  "name": "creative-code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sketch.js",
+  "scripts": {
+    "triangle": "npx canvas-sketch-cli src/triangle.js --open",
+    "seamless-curve": "npx canvas-sketch-cli src/seamless-curve.js --open",
+    "grid-curve": "npx canvas-sketch-cli src/grid-curve.js --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "canvas-sketch": "^0.7.6",
+    "canvas-sketch-util": "^1.10.0",
+    "colormap": "^2.3.2",
+    "riso-colors": "^1.0.1"
+  }
+}
