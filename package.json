@@ -7,6 +7,7 @@
     "triangle": "npx canvas-sketch-cli src/triangle.js --open",
     "seamless-curve": "npx canvas-sketch-cli src/seamless-curve.js --open",
     "grid-curve": "npx canvas-sketch-cli src/grid-curve.js --open",
+    "sunset": "npx canvas-sketch-cli src/sunset.js --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

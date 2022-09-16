@@ -46,13 +46,13 @@ class Point {
 	}
 
 /** @type {(c: CanvasRenderingContext2D) => void} */
-	draw(c) {
+	draw(c, fill, size = 10) {
 		c.save()
 		c.translate(this.x, this.y)
-		c.fillStyle = this.control ? 'red' : 'black'
+		c.fillStyle = fill || (this.control ? 'red' : 'black')
 		
 		c.beginPath()
-		c.arc(0, 0, 10, 0, Math.PI * 2)
+		c.arc(0, 0, size, 0, Math.PI * 2)
 		c.fill()
 
 		c.restore()
@@ -74,4 +74,26 @@ exports.getActualMousePos = (c, offsetX, offsetY) => {
 	const y = (offsetY / c.offsetHeight) * c.height
 
 	return { x, y }
+}
+
+/** @type {(c: CanvasRenderingContext2D, points: Point[]) => void} */
+exports.drawCurveThroughPoints = (c, points) => {
+	c.beginPath()
+	// First point
+	c.moveTo(points[0].x, points[0].y)
+	for(let i = 0; i < points.length - 2; i++) {
+		const curr = points[i]
+		const next = points[i + 1]
+
+		// Halfway through current and next point
+		const mx = curr.x + (next.x - curr.x) * 0.5
+		const my = curr.y + (next.y - curr.y) * 0.5
+
+		// Middle points
+		c.quadraticCurveTo(curr.x, curr.y, mx, my)
+	}
+	// Last point
+	const i = points.length - 2
+	c.quadraticCurveTo(points[i].x, points[i].y, points[i + 1].x, points[i + 1].y)
+	c.stroke()
 }
